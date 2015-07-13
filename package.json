@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "request": "^2.58.0",
+    "unzip": "^0.1.11",
     "xml2js": "^0.4.9"
   }
 }

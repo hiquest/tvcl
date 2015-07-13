@@ -1,5 +1,7 @@
 req = require('request')
 {parseString} = require 'xml2js'
+http = require('http')
+fs = require('fs')
 
 error = (msg) ->
   console.log("#{msg}")
@@ -14,6 +16,14 @@ xmlReq = (url, cb) ->
       return error("Error parsing response from #{url}: #{err}") if err
       cb(res)
 
+download = (url, to, cb) ->
+  file = fs.createWriteStream(to)
+  req = http.get url, (resp) ->
+    resp.pipe(file)
+    file.on 'finish', ->
+      file.close(cb)
+
 module.exports =
   error: error
   xmlReq: xmlReq
+  download: download
