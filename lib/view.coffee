@@ -1,20 +1,26 @@
 fs = require('fs')
 xml2js = require 'xml2js'
-{bold} = require('chalk')
+{bold, gray, yellow} = require('chalk')
 
 {error} = require './utils'
+watcher = require './watcher'
 
 BASE = "#{process.env['HOME']}/.tvcli"
 BASE_STORE = "#{BASE}/store"
 
 printEpisode = (e) ->
-  id = e['id'][0].green
+  watched = watcher.isWatched(e)
+
+  id = e['id'][0]
   season = e['SeasonNumber'][0]
   number = e['EpisodeNumber'][0]
-  name = bold(e['EpisodeName'][0])
+  name = e['EpisodeName'][0]
+  name = yellow(name) unless watched
   aired = e['FirstAired'][0] || 'TBA'
-  code = "S#{season}E#{number}"
-  console.log("   #{code} #{name}, #{aired}")
+  code = bold("S#{season}E#{number}")
+  line = "   #{id} #{code} #{name}, #{aired}"
+  line = gray(line) if watched
+  console.log(line)
 
 view = (id) ->
   console.log('Please specify Series id') unless id
