@@ -2,8 +2,8 @@ fs = require('fs')
 xml2js = require 'xml2js'
 {bold, gray, yellow} = require('chalk')
 
-{error} = require './utils'
-watcher = require './watcher'
+{error} = require '../lib/utils'
+watcher = require '../lib/watcher'
 
 BASE = "#{process.env['HOME']}/.tvcli"
 BASE_STORE = "#{BASE}/store"

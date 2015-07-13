@@ -3,7 +3,7 @@ xml2js = require 'xml2js'
 path = require('path')
 {bold} = require('chalk')
 
-{error, pr} = require './utils'
+{error, pr} = require '../lib/utils'
 
 BASE = "#{process.env['HOME']}/.tvcli"
 BASE_STORE = "#{BASE}/store"

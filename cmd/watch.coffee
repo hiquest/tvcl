@@ -1,5 +1,5 @@
-{error, pr} = require './utils'
-watcher = require './watcher'
+{error, pr} = require '../lib/utils'
+watcher = require '../lib/watcher'
 
 watch = (epId) ->
   return error("Specify episode id") unless epId

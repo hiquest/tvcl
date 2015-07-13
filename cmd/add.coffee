@@ -2,7 +2,7 @@ fs = require('fs')
 unzip = require('unzip')
 xml2js = require 'xml2js'
 
-{xmlReq, download, error} = require './utils'
+{xmlReq, download, error} = require '../lib/utils'
 view = require('./view')
 
 KEY = process.env.THETVDB_API_KEY

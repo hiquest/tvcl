@@ -1,8 +1,8 @@
-lookup = require('./lib/lookup')
-add    = require('./lib/add')
-view   = require('./lib/view')
-list   = require('./lib/list')
-watch  = require('./lib/watch')
+lookup = require('./cmd/lookup')
+add    = require('./cmd/add')
+view   = require('./cmd/view')
+list   = require('./cmd/list')
+watch  = require('./cmd/watch')
 
 cmd = process.argv[2]
 if cmd == 'lookup'

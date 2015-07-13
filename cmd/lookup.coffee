@@ -1,4 +1,4 @@
-{xmlReq, error, pr} = require './utils'
+{xmlReq, error, pr} = require '../lib/utils'
 
 KEY = process.env.THETVDB_API_KEY
 API_HOST = 'http://thetvdb.com'
