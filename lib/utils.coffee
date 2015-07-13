@@ -3,8 +3,10 @@ req = require('request')
 http = require('http')
 fs = require('fs')
 
+pr = (msg) -> console.log("    #{msg}")
+
 error = (msg) ->
-  console.log("#{msg}")
+  pr("#{msg}")
   process.exit(1)
 
 xmlReq = (url, cb) ->
@@ -15,6 +17,7 @@ xmlReq = (url, cb) ->
     parseString body, (err, res) ->
       return error("Error parsing response from #{url}: #{err}") if err
       cb(res)
+
 
 download = (url, to, cb) ->
   file = fs.createWriteStream(to)
@@ -27,3 +30,4 @@ module.exports =
   error: error
   xmlReq: xmlReq
   download: download
+  pr: pr

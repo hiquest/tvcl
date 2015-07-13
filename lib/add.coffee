@@ -3,6 +3,7 @@ unzip = require('unzip')
 xml2js = require 'xml2js'
 
 {xmlReq, download, error} = require './utils'
+view = require('./view')
 
 KEY = process.env.THETVDB_API_KEY
 API_HOST = 'http://thetvdb.com'
@@ -16,7 +17,7 @@ printEpisode = (e) ->
   season = e['SeasonNumber'][0]
   number = e['EpisodeNumber'][0]
   name = e['EpisodeName'][0]
-  aired = e['FirstAired'][0]
+  aired = e['FirstAired'][0] || 'TBA'
   console.log("   S#{season}E#{number} #{name}, #{aired}")
 
 add = (id) ->
@@ -31,12 +32,6 @@ add = (id) ->
     fs.createReadStream(zipFile)
       .pipe(unzip.Extract(path: "#{BASE_STORE}/#{id}"))
       .on 'close', ->
-        parser = new xml2js.Parser()
-        fs.readFile "#{BASE_STORE}/#{id}/en.xml", (err, data) ->
-          return error(err) if err
-          parser.parseString data, (err, result) ->
-            return error(err) if err
-            episodes = result['Data']['Episode']
-            episodes.forEach(printEpisode)
+        view(id)
 
 module.exports = add

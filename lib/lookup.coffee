@@ -1,4 +1,4 @@
-{xmlReq} = require './utils'
+{xmlReq, error, pr} = require './utils'
 
 KEY = process.env.THETVDB_API_KEY
 API_HOST = 'http://thetvdb.com'
@@ -7,10 +7,11 @@ API_HOST = 'http://thetvdb.com'
 api_lookup = (q) -> "#{API_HOST}/api/GetSeries.php?seriesname=#{q}"
 
 lookup = (q) ->
-  console.log('Please specify title to look for') unless q
+  return error('Please specify title to look for') unless q
   xmlReq api_lookup(q), (res) ->
+    return error('Could not find any show') unless res['Data']['Series']
     res['Data']['Series'].forEach (s) ->
       resLine = "#{s['seriesid']} #{s['SeriesName']} (since #{s['FirstAired']})"
-      console.log(resLine)
+      pr(resLine)
 
 module.exports = lookup
