@@ -1,6 +1,5 @@
 lookup = require('./lib/lookup')
 
-COMMANDS = ['lookup']
 cmd = process.argv[2]
 if cmd == 'lookup'
   args = process.argv.slice(3).join(' ')
