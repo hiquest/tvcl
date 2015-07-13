@@ -1,5 +1,6 @@
 fs = require('fs')
 xml2js = require 'xml2js'
+{bold} = require('chalk')
 
 {error} = require './utils'
 
@@ -10,9 +11,10 @@ printEpisode = (e) ->
   id = e['id'][0].green
   season = e['SeasonNumber'][0]
   number = e['EpisodeNumber'][0]
-  name = e['EpisodeName'][0]
+  name = bold(e['EpisodeName'][0])
   aired = e['FirstAired'][0] || 'TBA'
-  console.log("   S#{season}E#{number} #{name}, #{aired}")
+  code = "S#{season}E#{number}"
+  console.log("   #{code} #{name}, #{aired}")
 
 view = (id) ->
   console.log('Please specify Series id') unless id

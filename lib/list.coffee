@@ -1,6 +1,7 @@
 fs = require('fs')
 xml2js = require 'xml2js'
 path = require('path')
+{bold} = require('chalk')
 
 {error, pr} = require './utils'
 
@@ -20,6 +21,9 @@ list = ->
         return error(err) if err
         info = result['Data']['Series'][0]
         title = info['SeriesName'][0]
-        pr("#{id} #{title}")
+        overview = info['Overview'][0]
+        pr("#{id} #{bold(title)}")
+        # console.log(overview)
+        # console.log("\n")
 
 module.exports = list

@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "chalk": "^1.1.0",
     "request": "^2.58.0",
     "unzip": "^0.1.11",
     "xml2js": "^0.4.9"
