@@ -40,13 +40,13 @@ readSeries = (id, cb) ->
     storage[id] = result
     cb('', result)
 
-readAll = (cb) ->
-  return error("Your database is empty") unless fs.existsSync(BASE_STORE)
-  ids = fs.readdirSync(BASE_STORE).filter (f) ->
+available = ->
+  fs.readdirSync(BASE_STORE).filter (f) ->
     fs.statSync(path.join(BASE_STORE, f)).isDirectory()
 
-  async.map ids, readSeries, (err, results) ->
-    cb()
+readAll = (cb) ->
+  return error("Your database is empty") unless fs.existsSync(BASE_STORE)
+  async.map(available(), readSeries, cb)
 
 series = (id, cb) ->
   if storage[id]
@@ -67,9 +67,14 @@ add = (id, cb) ->
       .pipe(unzip.Extract(path: "#{BASE_STORE}/#{id}"))
       .on 'close', -> cb()
 
+# Should be used only after readAll!
+all = ->
+  Object.keys(storage).map (k) -> storage[k]
+
 module.exports =
   series: series
   readAll: readAll
   findSeriesByEp: findByEp
   findEp: findEp
   add: add
+  all: all
