@@ -7,6 +7,12 @@ API_HOST = 'http://thetvdb.com'
 # API URL
 api_lookup = (q) -> "#{API_HOST}/api/GetSeries.php?seriesname=#{q}"
 
+printOverview = (s) ->
+  overview = s['Overview'] && s['Overview'][0]
+  if overview
+    overview = overview.substring(0, 256) + '...' if overview.length > 256
+    pr(gray(overview))
+
 lookup = (q) ->
   return error('Please specify title to look for') unless q
   xmlReq api_lookup(q), (res) ->
@@ -16,11 +22,7 @@ lookup = (q) ->
       aired = s['FirstAired'] || '?'
       resLine = "#{s['seriesid']} #{name} (since #{aired})"
       pr(resLine)
-
-      overview = s['Overview'] && s['Overview'][0]
-      if overview
-        overview = overview.substring(0, 256) + '...' if overview.length > 256
-        pr(gray(overview))
+      printOverview(s)
       pr('  ')
 
 module.exports = lookup
