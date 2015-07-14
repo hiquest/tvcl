@@ -2,10 +2,13 @@ fs = require('fs')
 xml2js = require 'xml2js'
 async = require 'async'
 path = require('path')
+unzip = require('unzip')
 _ = require 'underscore'
 
-{error} = require '../lib/utils'
+{error, download} = require './utils'
 
+KEY = process.env.THETVDB_API_KEY
+API_HOST = 'http://thetvdb.com'
 BASE = "#{process.env['HOME']}/.tvcli"
 BASE_STORE = "#{BASE}/store"
 
@@ -52,8 +55,21 @@ series = (id, cb) ->
     readSeries id, (err, res) ->
       cb(storage[id])
 
+add = (id, cb) ->
+  zip_url = (id) -> "#{API_HOST}/api/#{KEY}/series/#{id}/all/en.zip"
+  fs.mkdirSync(BASE) unless fs.existsSync(BASE)
+  fs.mkdirSync(BASE_STORE) unless fs.existsSync(BASE_STORE)
+
+  zipFile = "#{BASE_STORE}/#{id}.zip"
+
+  download zip_url(id), zipFile, ->
+    fs.createReadStream(zipFile)
+      .pipe(unzip.Extract(path: "#{BASE_STORE}/#{id}"))
+      .on 'close', -> cb()
+
 module.exports =
   series: series
   readAll: readAll
   findSeriesByEp: findByEp
   findEp: findEp
+  add: add
