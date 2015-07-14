@@ -13,7 +13,14 @@ lookup = (q) ->
     return error('Could not find any show') unless res['Data']['Series']
     res['Data']['Series'].forEach (s) ->
       name = bold(s['SeriesName'])
-      resLine = "#{s['seriesid']} #{name} (since #{s['FirstAired']})"
+      aired = s['FirstAired'] || '?'
+      resLine = "#{s['seriesid']} #{name} (since #{aired})"
       pr(resLine)
+
+      overview = s['Overview'] && s['Overview'][0]
+      if overview
+        overview = overview.substring(0, 256) + '...' if overview.length > 256
+        pr(gray(overview))
+      pr('  ')
 
 module.exports = lookup
