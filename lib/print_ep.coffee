@@ -22,7 +22,6 @@ printEp = (e, showOverview = false) ->
   pr(line)
   if showOverview
     printOverview(e)
-    pr('  ')
-
+    pr("")
 
 module.exports = printEp

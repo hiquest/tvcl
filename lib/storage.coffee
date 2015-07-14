@@ -1,8 +1,8 @@
-fs = require('fs')
+fs = require 'fs'
 xml2js = require 'xml2js'
 async = require 'async'
-path = require('path')
-unzip = require('unzip')
+path = require 'path'
+unzip = require 'unzip'
 _ = require 'underscore'
 rimraf = require 'rimraf'
 
