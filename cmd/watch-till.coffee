@@ -14,6 +14,7 @@ till = (epId) ->
     episodes = series['Data']['Episode']
     episodes.forEach (e) ->
       aired = e['FirstAired'][0]
+      return unless aired
       m = moment(aired)
       if m.isBefore(epMomemnt)
         watcher.watch(e['id'][0])
