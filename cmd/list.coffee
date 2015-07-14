@@ -6,8 +6,9 @@ list = ->
   storage.readAll ->
     series = storage.all()
     if series.length
-      storage.all().forEach (s) ->
-        printSeries(s['Data']['Series'][0])
+      storage.all()
+             .map((s) -> s['Data']['Series'][0])
+             .forEach(printSeries)
     else
       return error("Your database is empty")
 
