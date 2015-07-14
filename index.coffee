@@ -21,7 +21,7 @@ else if cmd == 'watch-till'
 else if cmd == 'list'
   list()
 else if cmd == 'view'
-  view(process.argv[3])
+  view(process.argv[3], process.argv[4])
 else if cmd == 'rm'
   rm(process.argv[3])
 else if cmd == 'update'

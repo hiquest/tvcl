@@ -8,7 +8,7 @@ list = ->
     if series.length
       storage.all()
              .map((s) -> s['Data']['Series'][0])
-             .forEach(printSeries)
+             .forEach (s) -> printSeries(s, false)
     else
       return error("Your database is empty")
 
