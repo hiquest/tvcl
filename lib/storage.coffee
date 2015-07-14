@@ -4,6 +4,7 @@ async = require 'async'
 path = require('path')
 unzip = require('unzip')
 _ = require 'underscore'
+rimraf = require 'rimraf'
 
 {error, download} = require './utils'
 
@@ -67,6 +68,13 @@ add = (id, cb) ->
       .pipe(unzip.Extract(path: "#{BASE_STORE}/#{id}"))
       .on 'close', -> cb()
 
+rm = (id, cb) ->
+  files = [
+    "#{BASE_STORE}/#{id}.zip",
+    "#{BASE_STORE}/#{id}"
+  ]
+  async.map(files, rimraf, cb)
+
 # Should be used only after readAll!
 all = ->
   Object.keys(storage).map (k) -> storage[k]
@@ -78,3 +86,4 @@ module.exports =
   findEp: findEp
   add: add
   all: all
+  rm: rm

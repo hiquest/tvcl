@@ -4,6 +4,7 @@ view   = require('./cmd/view')
 list   = require('./cmd/list')
 watch  = require('./cmd/watch')
 watchTill  = require('./cmd/watch-till')
+rm     = require('./cmd/rm')
 
 cmd = process.argv[2]
 if cmd == 'lookup'
@@ -20,6 +21,8 @@ else if cmd == 'list'
   list()
 else if cmd == 'view'
   view(process.argv[3])
+else if cmd == 'rm'
+  rm(process.argv[3])
 else
   console.log('Unsupported command')
   process.exit(1)
