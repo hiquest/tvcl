@@ -12,7 +12,8 @@ if cmd == 'lookup'
 else if cmd == 'add'
   add(process.argv[3])
 else if cmd == 'watch'
-  watch(process.argv[3])
+  args = process.argv.slice(3)
+  watch(args)
 else if cmd == 'watch-till'
   watchTill(process.argv[3])
 else if cmd == 'list'

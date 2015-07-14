@@ -1,9 +1,9 @@
 {error, pr} = require '../lib/utils'
 watcher = require '../lib/watcher'
 
-watch = (epId) ->
-  return error("Specify episode id") unless epId
-  watcher.watch(epId)
+watch = (ids) ->
+  return error("Specify episode id") unless ids.length
+  ids.forEach (id) -> watcher.watch(id)
   watcher.save()
 
 module.exports = watch
