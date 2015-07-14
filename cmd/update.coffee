@@ -3,7 +3,7 @@ storage = require '../lib/storage'
 {pr}= require '../lib/utils'
 
 update = (id) ->
-  storage.rm update, ->
+  storage.update ->
     pr "Update all shows...#{bold('OK')}"
 
 module.exports = update
