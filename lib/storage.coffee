@@ -75,6 +75,14 @@ rm = (id, cb) ->
   ]
   async.map(files, rimraf, cb)
 
+updateOne = (id, cb) ->
+  rm id, ->
+    add id, ->
+      cb()
+
+update = (cb) ->
+  async.map(available(), updateOne, cb)
+
 # Should be used only after readAll!
 all = ->
   Object.keys(storage).map (k) -> storage[k]
@@ -87,3 +95,4 @@ module.exports =
   add: add
   all: all
   rm: rm
+  update: update
