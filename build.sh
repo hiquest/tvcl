@@ -2,4 +2,4 @@
 
 set -e
 
-browserify -t coffeeify  --extension=".coffee" --no-bundle-external --node index.coffee > index.js
+browserify -t coffeeify  --extension=".coffee" --no-bundle-external --node src/index.coffee > index.js
