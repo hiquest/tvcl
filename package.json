@@ -1,13 +1,16 @@
 {
-  "name": "tvt",
-  "version": "1.0.0",
-  "description": "",
+  "name": "tvcl",
+  "version": "0.1.0",
+  "description": "A simple tool for tracking tv shows",
   "main": "index.js",
+  "bin": {
+    "tvcl": "index.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Yanis",
+  "license": "MIT",
   "dependencies": {
     "async": "^1.3.0",
     "chalk": "^1.1.0",
@@ -16,5 +19,16 @@
     "underscore": "^1.8.3",
     "unzip": "^0.1.11",
     "xml2js": "^0.4.9"
-  }
+  },
+  "repository": "hiquest/tvcl",
+  "devDependencies": {
+    "coffeeify": "^1.1.0"
+  },
+  "keywords": [
+    "tv",
+    "series",
+    "shows",
+    "tracker"
+  ],
+  "preferGlobal": "true"
 }
