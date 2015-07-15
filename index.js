@@ -354,7 +354,7 @@ KEY = process.env.THETVDB_API_KEY;
 
 API_HOST = 'http://thetvdb.com';
 
-BASE = process.env['HOME'] + "/.tvcli";
+BASE = process.env['HOME'] + "/.tvcl";
 
 BASE_STORE = BASE + "/store";
 
@@ -546,7 +546,7 @@ var BASE, WATCH_FILE, fs, isWatched, read, save, watch, watchFn;
 
 fs = require('fs');
 
-BASE = process.env['HOME'] + "/.tvcli";
+BASE = process.env['HOME'] + "/.tvcl";
 
 WATCH_FILE = BASE + "/watch.json";
 

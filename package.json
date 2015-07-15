@@ -1,6 +1,6 @@
 {
   "name": "tvcl",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "A simple tool for tracking tv shows",
   "main": "index.js",
   "bin": {
@@ -16,6 +16,7 @@
     "chalk": "^1.1.0",
     "moment": "^2.10.3",
     "request": "^2.58.0",
+    "rimraf": "^2.4.1",
     "underscore": "^1.8.3",
     "unzip": "^0.1.11",
     "xml2js": "^0.4.9"
