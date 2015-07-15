@@ -1,6 +1,6 @@
 fs = require('fs')
 
-BASE = "#{process.env['HOME']}/.tvcli"
+BASE = "#{process.env['HOME']}/.tvcl"
 WATCH_FILE = "#{BASE}/watch.json"
 
 watch = undefined

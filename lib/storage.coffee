@@ -10,7 +10,7 @@ rimraf = require 'rimraf'
 
 KEY = process.env.THETVDB_API_KEY
 API_HOST = 'http://thetvdb.com'
-BASE = "#{process.env['HOME']}/.tvcli"
+BASE = "#{process.env['HOME']}/.tvcl"
 BASE_STORE = "#{BASE}/store"
 
 storage = {}
