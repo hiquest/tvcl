@@ -1,6 +1,6 @@
 {
   "name": "tvcl",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "A simple tool for tracking tv shows",
   "main": "index.js",
   "bin": {
@@ -13,11 +13,11 @@
   "author": "Yanis",
   "license": "MIT",
   "dependencies": {
-    "async": "^1.3.0",
+    "async": "^1.4.0",
     "chalk": "^1.1.0",
     "moment": "^2.10.3",
-    "request": "^2.58.0",
-    "rimraf": "^2.4.1",
+    "request": "^2.60.0",
+    "rimraf": "^2.4.2",
     "underscore": "^1.8.3",
     "unzip": "^0.1.11",
     "xml2js": "^0.4.9"

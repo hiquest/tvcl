@@ -1,7 +1,8 @@
 {bold, gray, yellow} = require('chalk')
+
 storage = require '../lib/storage'
 watcher = require '../lib/watcher'
-{pr}= require '../lib/utils'
+{pr}    = require '../lib/utils'
 printEp = require '../lib/print_ep'
 
 rem = ->
@@ -14,8 +15,9 @@ rem = ->
       eps = episodes.filter (e) -> !watcher.isWatched(e)
 
       if eps.length
+        pr("  ")
         pr("#{bold(title)}")
+        pr("  ")
         eps.forEach (e) -> printEp(e)
-      pr("\n")
 
 module.exports = rem
