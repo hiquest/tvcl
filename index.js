@@ -66,7 +66,7 @@ api_lookup = function(q) {
   return API_HOST + "/api/GetSeries.php?seriesname=" + q;
 };
 
-lookup = function(q) {
+lookup = function(args) {
   if (!q) {
     return error('Please specify title to look for');
   }
@@ -107,12 +107,13 @@ rem = function() {
         return !watcher.isWatched(e);
       });
       if (eps.length) {
+        pr("  ");
         pr("" + (bold(title)));
-        eps.forEach(function(e) {
+        pr("  ");
+        return eps.forEach(function(e) {
           return printEp(e);
         });
       }
-      return pr("\n");
     });
   });
 };
@@ -590,7 +591,7 @@ module.exports = {
 
 
 },{"fs":undefined}],15:[function(require,module,exports){
-var KEY, add, args, cmd, list, lookup, remained, rm, update, view, watch, watchTill;
+var KEY, add, args, cmd, commands, error, fn, list, lookup, remained, rm, update, view, watch, watchTill;
 
 lookup = require('./cmd/lookup');
 
@@ -610,6 +611,8 @@ update = require('./cmd/update');
 
 remained = require('./cmd/remained');
 
+error = require('./lib/utils').error;
+
 KEY = process.env.THETVDB_API_KEY;
 
 if (!KEY) {
@@ -619,33 +622,33 @@ if (!KEY) {
 
 cmd = process.argv[2];
 
-if (cmd === 'lookup') {
-  args = process.argv.slice(3).join(' ');
-  lookup(args);
-} else if (cmd === 'add') {
-  add(process.argv[3]);
-} else if (cmd === 'watch') {
-  args = process.argv.slice(3);
-  watch(args);
-} else if (cmd === 'watch-till') {
-  watchTill(process.argv[3]);
-} else if (cmd === 'list') {
-  list();
-} else if (cmd === 'view') {
-  view(process.argv[3], process.argv[4]);
-} else if (cmd === 'rm') {
-  rm(process.argv[3]);
-} else if (cmd === 'update') {
-  update();
-} else if (cmd === 'remained') {
-  remained();
-} else if (!cmd) {
-  remained();
+args = process.argv.slice(3);
+
+commands = {
+  lookup: lookup,
+  add: add,
+  watch: watch,
+  'watch-till': watchTill,
+  view: view,
+  list: list,
+  rm: rm,
+  update: update,
+  remained: remained
+};
+
+fn = void 0;
+
+if (cmd) {
+  fn = commands[cmd];
+  if (!fn) {
+    return error("Unsupported command");
+  }
 } else {
-  console.log('Unsupported command');
-  process.exit(1);
+  fn = remained;
 }
 
+fn.apply(null, args);
 
 
-},{"./cmd/add":1,"./cmd/list":2,"./cmd/lookup":3,"./cmd/remained":4,"./cmd/rm":5,"./cmd/update":6,"./cmd/view":7,"./cmd/watch":9,"./cmd/watch-till":8}]},{},[15]);
+
+},{"./cmd/add":1,"./cmd/list":2,"./cmd/lookup":3,"./cmd/remained":4,"./cmd/rm":5,"./cmd/update":6,"./cmd/view":7,"./cmd/watch":9,"./cmd/watch-till":8,"./lib/utils":13}]},{},[15]);
