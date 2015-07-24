@@ -7,7 +7,8 @@ API_HOST = 'http://thetvdb.com'
 # API URL
 api_lookup = (q) -> "#{API_HOST}/api/GetSeries.php?seriesname=#{q}"
 
-lookup = (args) ->
+lookup = (args...) ->
+  q = args.join(' ')
   return error('Please specify title to look for') unless q
   xmlReq api_lookup(q), (res) ->
     return error('Could not find any show') unless res['Data']['Series']

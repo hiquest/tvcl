@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var add, error, storage, view;
 
@@ -52,7 +51,8 @@ module.exports = list;
 
 
 },{"../lib/print_series":11,"../lib/storage":12,"../lib/utils":13}],3:[function(require,module,exports){
-var API_HOST, KEY, api_lookup, error, lookup, printSeries, ref, xmlReq;
+var API_HOST, KEY, api_lookup, error, lookup, printSeries, ref, xmlReq,
+  slice = [].slice;
 
 ref = require('../lib/utils'), xmlReq = ref.xmlReq, error = ref.error;
 
@@ -66,7 +66,10 @@ api_lookup = function(q) {
   return API_HOST + "/api/GetSeries.php?seriesname=" + q;
 };
 
-lookup = function(args) {
+lookup = function() {
+  var args, q;
+  args = 1 <= arguments.length ? slice.call(arguments, 0) : [];
+  q = args.join(' ');
   if (!q) {
     return error('Please specify title to look for');
   }
@@ -224,13 +227,16 @@ module.exports = till;
 
 
 },{"../lib/storage":12,"../lib/utils":13,"../lib/watcher":14,"moment":undefined}],9:[function(require,module,exports){
-var error, pr, ref, watch, watcher;
+var error, pr, ref, watch, watcher,
+  slice = [].slice;
 
 ref = require('../lib/utils'), error = ref.error, pr = ref.pr;
 
 watcher = require('../lib/watcher');
 
-watch = function(ids) {
+watch = function() {
+  var ids;
+  ids = 1 <= arguments.length ? slice.call(arguments, 0) : [];
   if (!ids.length) {
     return error("Specify episode id");
   }
