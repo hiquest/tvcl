@@ -81,7 +81,8 @@ updateOne = (id, cb) ->
       cb()
 
 update = (cb) ->
-  async.map(available(), updateOne, cb)
+  all_series = available()
+  async.map(all_series, updateOne, cb)
 
 # Should be used only after readAll!
 all = ->
