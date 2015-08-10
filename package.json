@@ -1,6 +1,6 @@
 {
   "name": "tvcl",
-  "version": "0.1.9",
+  "version": "0.2.0",
   "description": "A simple tool for tracking tv shows",
   "main": "index.js",
   "bin": {

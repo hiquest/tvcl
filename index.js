@@ -86,9 +86,11 @@ module.exports = lookup;
 
 
 },{"../lib/print_series":11,"../lib/utils":13}],4:[function(require,module,exports){
-var bold, gray, pr, printEp, ref, rem, storage, watcher, yellow;
+var bold, gray, moment, pr, printEp, ref, rem, storage, watcher, yellow;
 
 ref = require('chalk'), bold = ref.bold, gray = ref.gray, yellow = ref.yellow;
+
+moment = require('moment');
 
 storage = require('../lib/storage');
 
@@ -102,12 +104,20 @@ rem = function() {
   return storage.readAll(function() {
     var series;
     series = storage.all();
+    if (!series.length) {
+      pr('No Series Added Yet. Try `tv lookup <title>` first');
+      return;
+    }
     return series.forEach(function(s) {
       var episodes, eps, title;
       title = "[" + s['Data']['Series'][0]['SeriesName'][0] + "]";
       episodes = s['Data']['Episode'];
       eps = episodes.filter(function(e) {
         return !watcher.isWatched(e);
+      }).filter(function(e) {
+        return !!e['FirstAired'][0];
+      }).filter(function(e) {
+        return moment(e['FirstAired'][0]).isBefore(moment());
       });
       if (eps.length) {
         pr("  ");
@@ -125,7 +135,7 @@ module.exports = rem;
 
 
 
-},{"../lib/print_ep":10,"../lib/storage":12,"../lib/utils":13,"../lib/watcher":14,"chalk":undefined}],5:[function(require,module,exports){
+},{"../lib/print_ep":10,"../lib/storage":12,"../lib/utils":13,"../lib/watcher":14,"chalk":undefined,"moment":undefined}],5:[function(require,module,exports){
 var rm, storage;
 
 storage = require('../lib/storage');
@@ -471,7 +481,9 @@ updateOne = function(id, cb) {
 };
 
 update = function(cb) {
-  return async.map(available(), updateOne, cb);
+  var all_series;
+  all_series = available();
+  return async.map(all_series, updateOne, cb);
 };
 
 all = function() {
