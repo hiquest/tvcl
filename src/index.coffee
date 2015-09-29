@@ -14,7 +14,7 @@ remained  = require('./cmd/remained')
 # Checking if key is present
 KEY = process.env.THETVDB_API_KEY
 unless KEY
-  console.log "You should set up 'THETVDB_API_KEY' env variable"
+  console.log "You should set up 'THETVDB_API_KEY' env variable. Go here to get it: http://thetvdb.com/?tab=apiregister"
   proccess.exit(1)
 
 cmd = process.argv[2]

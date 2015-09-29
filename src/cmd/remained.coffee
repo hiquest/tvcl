@@ -6,7 +6,10 @@ watcher = require '../lib/watcher'
 {pr}    = require '../lib/utils'
 printEp = require '../lib/print_ep'
 
-rem = ->
+rem = (param) ->
+
+  showOverview = param == '--with-overview' || param == '--wo'
+
   storage.readAll ->
     series = storage.all()
     if !series.length
@@ -24,6 +27,6 @@ rem = ->
         pr("  ")
         pr("#{bold(title)}")
         pr("  ")
-        eps.forEach (e) -> printEp(e)
+        eps.forEach (e) -> printEp(e, showOverview)
 
 module.exports = rem

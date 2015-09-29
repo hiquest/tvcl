@@ -100,7 +100,9 @@ pr = require('../lib/utils').pr;
 
 printEp = require('../lib/print_ep');
 
-rem = function() {
+rem = function(param) {
+  var showOverview;
+  showOverview = param === '--with-overview' || param === '--wo';
   return storage.readAll(function() {
     var series;
     series = storage.all();
@@ -124,7 +126,7 @@ rem = function() {
         pr("" + (bold(title)));
         pr("  ");
         return eps.forEach(function(e) {
-          return printEp(e);
+          return printEp(e, showOverview);
         });
       }
     });
@@ -634,7 +636,7 @@ error = require('./lib/utils').error;
 KEY = process.env.THETVDB_API_KEY;
 
 if (!KEY) {
-  console.log("You should set up 'THETVDB_API_KEY' env variable");
+  console.log("You should set up 'THETVDB_API_KEY' env variable. Go here to get it: http://thetvdb.com/?tab=apiregister");
   proccess.exit(1);
 }
 
