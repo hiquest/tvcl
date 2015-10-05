@@ -22,6 +22,7 @@ args = process.argv.slice(3)
 
 commands =
   lookup: lookup
+  search: lookup # alias
   add: add
   watch: watch
   'watch-till': watchTill
