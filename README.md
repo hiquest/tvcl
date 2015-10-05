@@ -36,9 +36,9 @@ List added series:
 $ tvcl list
 ```
 
-View episodes (--wo stands for "with overview"):
+View the list of episodes for specified series (--wo stands for "with overview"):
 ```bash
-$ tvcl view {id} --wo
+$ tvcl view {series_id} --wo
 ```
 
 Mark episode as watched:
