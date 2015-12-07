@@ -26,7 +26,9 @@ commands =
   add: add
   watch: watch
   'watch-till': watchTill
+  wt: watchTill
   view: view
+  show: view
   list: list
   rm: rm
   update: update
