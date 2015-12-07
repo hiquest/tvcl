@@ -25,6 +25,7 @@ Lookup the series title:
 ```bash
 $ tvcl lookup the simpsons
 ```
+(you can use `search` alias)
 
 Add the series to local database by id:
 ```bash 
@@ -40,6 +41,7 @@ View episodes (--wo stands for "with overview"):
 ```bash
 $ tvcl view {id} --wo
 ```
+(you can use `show` alias)
 
 Mark episode as watched:
 ```
@@ -50,6 +52,7 @@ Mark all episodes till the specified as watched:
 ```bash
 $ tvcl watch-till {epid}
 ```
+(you can use `wt` alias)
 
 Show the not-watched-yet episoded:
 ```
