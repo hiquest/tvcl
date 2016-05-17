@@ -1,13 +1,14 @@
 {
   "name": "tvcl",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "A simple CLI for tracking tv shows",
   "main": "index.js",
   "bin": {
     "tvcl": "index.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "browserify -t coffeeify  --extension='.coffee' --no-bundle-external --node src/index.coffee > index-tmp.js"
   },
   "files": [],
   "author": "Yanis",
@@ -24,6 +25,7 @@
   },
   "repository": "hiquest/tvcl",
   "devDependencies": {
+    "browserify": "^13.0.1",
     "coffeeify": "^1.1.0"
   },
   "keywords": [
