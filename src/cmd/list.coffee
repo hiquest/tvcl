@@ -10,6 +10,6 @@ list = ->
              .map((s) -> s['Data']['Series'][0])
              .forEach (s) -> printSeries(s, false)
     else
-      return error("Your database is empty")
+      return error("No Series Added Yet. Try `tv lookup <title>` first. And then `tv add <id>`")
 
 module.exports = list

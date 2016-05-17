@@ -18,7 +18,6 @@ xmlReq = (url, cb) ->
       return error("Error parsing response from #{url}: #{err}") if err
       cb(res)
 
-
 download = (url, to, cb) ->
   file = fs.createWriteStream(to)
   req = http.get url, (resp) ->

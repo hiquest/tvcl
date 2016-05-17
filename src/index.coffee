@@ -34,11 +34,11 @@ commands =
   update: update
   remained: remained
 
-fn = undefined
-if cmd
-  fn = commands[cmd]
-  return error("Unsupported command") unless fn
-else
-  fn = remained # Default command
+fn = if cmd
+       commands[cmd]
+     else
+       remained # Default command
+
+error("Unsupported command") unless fn
 
 fn(args...)
