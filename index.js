@@ -20,8 +20,42 @@ add = function(id) {
 module.exports = add;
 
 
+},{"../lib/storage":14,"../lib/utils":15,"./view":8}],2:[function(require,module,exports){
+var bold, help;
 
-},{"../lib/storage":12,"../lib/utils":13,"./view":7}],2:[function(require,module,exports){
+bold = require('chalk').bold;
+
+help = function() {
+  console.log((bold('tvcl')) + " is a simple script that helps to keep track of episodes watched and episodes available (using thetvdb.com API as a source). You need to get an API key (which is free at http://thetvdb.com/?tab=apiregister) and set an environment variable " + (bold('THETVDB_API_KEY')) + ".");
+  console.log("\n");
+  console.log("Usage: " + (bold('tvcl')) + " <command> {params}");
+  console.log("\n");
+  console.log((bold('lookup')) + " or " + (bold('search')) + " <title>");
+  console.log("    lookup for a particular show");
+  console.log((bold('add')) + " <id>");
+  console.log("    add the show to local database");
+  console.log("" + (bold('update')));
+  console.log("    updates the local episodes data (you should do it from time to time)");
+  console.log("" + (bold('list')));
+  console.log("    list the tv shows in local database");
+  console.log((bold('view')) + " or " + (bold('show')) + " <id>");
+  console.log("    show the list of episodes");
+  console.log((bold('rm')) + " <id>");
+  console.log("    removes the tv show from local database");
+  console.log((bold('watch')) + " <episode-id>");
+  console.log("    mark a specific episode as watched");
+  console.log((bold('watch-till')) + " or " + (bold('wt')) + " <episode-id>");
+  console.log("    mark a specific episode as watched and all of the episodes before it");
+  console.log((bold('remained')) + " ( or with no command )");
+  console.log("    shows episodes remained to be watched (but only the ones that are out by current date)");
+  console.log("" + (bold('help')));
+  return console.log("    prints what you are now looking at");
+};
+
+module.exports = help;
+
+
+},{"chalk":undefined}],3:[function(require,module,exports){
 var error, list, printSeries, storage;
 
 error = require('../lib/utils').error;
@@ -41,7 +75,7 @@ list = function() {
         return printSeries(s, false);
       });
     } else {
-      return error("Your database is empty");
+      return error("No Series Added Yet. Try `tv lookup <title>` first. And then `tv add <id>`");
     }
   });
 };
@@ -49,8 +83,7 @@ list = function() {
 module.exports = list;
 
 
-
-},{"../lib/print_series":11,"../lib/storage":12,"../lib/utils":13}],3:[function(require,module,exports){
+},{"../lib/print_series":13,"../lib/storage":14,"../lib/utils":15}],4:[function(require,module,exports){
 var API_HOST, KEY, api_lookup, error, lookup, printSeries, ref, xmlReq,
   slice = [].slice;
 
@@ -84,8 +117,7 @@ lookup = function() {
 module.exports = lookup;
 
 
-
-},{"../lib/print_series":11,"../lib/utils":13}],4:[function(require,module,exports){
+},{"../lib/print_series":13,"../lib/utils":15}],5:[function(require,module,exports){
 var bold, gray, moment, pr, printEp, ref, rem, storage, watcher, yellow;
 
 ref = require('chalk'), bold = ref.bold, gray = ref.gray, yellow = ref.yellow;
@@ -107,7 +139,7 @@ rem = function(param) {
     var series;
     series = storage.all();
     if (!series.length) {
-      pr('No Series Added Yet. Try `tv lookup <title>` first');
+      pr('No Series Added Yet. Try `tv lookup <title>` first. And then `tv add <id>`');
       return;
     }
     return series.forEach(function(s) {
@@ -136,8 +168,7 @@ rem = function(param) {
 module.exports = rem;
 
 
-
-},{"../lib/print_ep":10,"../lib/storage":12,"../lib/utils":13,"../lib/watcher":14,"chalk":undefined,"moment":undefined}],5:[function(require,module,exports){
+},{"../lib/print_ep":12,"../lib/storage":14,"../lib/utils":15,"../lib/watcher":16,"chalk":undefined,"moment":undefined}],6:[function(require,module,exports){
 var rm, storage;
 
 storage = require('../lib/storage');
@@ -151,8 +182,7 @@ rm = function(id) {
 module.exports = rm;
 
 
-
-},{"../lib/storage":12}],6:[function(require,module,exports){
+},{"../lib/storage":14}],7:[function(require,module,exports){
 var bold, gray, pr, ref, storage, update, yellow;
 
 ref = require('chalk'), bold = ref.bold, gray = ref.gray, yellow = ref.yellow;
@@ -170,8 +200,7 @@ update = function(id) {
 module.exports = update;
 
 
-
-},{"../lib/storage":12,"../lib/utils":13,"chalk":undefined}],7:[function(require,module,exports){
+},{"../lib/storage":14,"../lib/utils":15,"chalk":undefined}],8:[function(require,module,exports){
 var error, printEp, storage, view;
 
 error = require('../lib/utils').error;
@@ -197,8 +226,7 @@ view = function(id, param) {
 module.exports = view;
 
 
-
-},{"../lib/print_ep":10,"../lib/storage":12,"../lib/utils":13}],8:[function(require,module,exports){
+},{"../lib/print_ep":12,"../lib/storage":14,"../lib/utils":15}],9:[function(require,module,exports){
 var error, moment, pr, ref, storage, till, watcher;
 
 moment = require('moment');
@@ -237,8 +265,7 @@ till = function(epId) {
 module.exports = till;
 
 
-
-},{"../lib/storage":12,"../lib/utils":13,"../lib/watcher":14,"moment":undefined}],9:[function(require,module,exports){
+},{"../lib/storage":14,"../lib/utils":15,"../lib/watcher":16,"moment":undefined}],10:[function(require,module,exports){
 var error, pr, ref, watch, watcher,
   slice = [].slice;
 
@@ -261,8 +288,68 @@ watch = function() {
 module.exports = watch;
 
 
+},{"../lib/utils":15,"../lib/watcher":16}],11:[function(require,module,exports){
+var KEY, add, args, cmd, commands, error, fn, help, list, lookup, remained, rm, update, view, watch, watchTill;
 
-},{"../lib/utils":13,"../lib/watcher":14}],10:[function(require,module,exports){
+lookup = require('./cmd/lookup');
+
+add = require('./cmd/add');
+
+view = require('./cmd/view');
+
+list = require('./cmd/list');
+
+watch = require('./cmd/watch');
+
+watchTill = require('./cmd/watch-till');
+
+rm = require('./cmd/rm');
+
+update = require('./cmd/update');
+
+remained = require('./cmd/remained');
+
+help = require('./cmd/help');
+
+error = require('./lib/utils').error;
+
+KEY = process.env.THETVDB_API_KEY;
+
+if (!KEY) {
+  console.log("You should set up 'THETVDB_API_KEY' env variable. Go here to get it: http://thetvdb.com/?tab=apiregister");
+  process.exit(1);
+}
+
+cmd = process.argv[2];
+
+args = process.argv.slice(3);
+
+commands = {
+  lookup: lookup,
+  search: lookup,
+  add: add,
+  watch: watch,
+  'watch-till': watchTill,
+  wt: watchTill,
+  view: view,
+  show: view,
+  list: list,
+  rm: rm,
+  update: update,
+  remained: remained,
+  help: help
+};
+
+fn = cmd ? commands[cmd] : remained;
+
+if (!fn) {
+  error("Unsupported command");
+}
+
+fn.apply(null, args);
+
+
+},{"./cmd/add":1,"./cmd/help":2,"./cmd/list":3,"./cmd/lookup":4,"./cmd/remained":5,"./cmd/rm":6,"./cmd/update":7,"./cmd/view":8,"./cmd/watch":10,"./cmd/watch-till":9,"./lib/utils":15}],12:[function(require,module,exports){
 var bold, gray, pr, printEp, printOverview, ref, watcher, yellow;
 
 ref = require('chalk'), bold = ref.bold, gray = ref.gray, yellow = ref.yellow;
@@ -311,8 +398,7 @@ printEp = function(e, showOverview) {
 module.exports = printEp;
 
 
-
-},{"./utils":13,"./watcher":14,"chalk":undefined}],11:[function(require,module,exports){
+},{"./utils":15,"./watcher":16,"chalk":undefined}],13:[function(require,module,exports){
 var bold, gray, pr, printOverview, printSeries, ref, watcher, yellow;
 
 ref = require('chalk'), bold = ref.bold, gray = ref.gray, yellow = ref.yellow;
@@ -351,8 +437,7 @@ printSeries = function(s, overview) {
 module.exports = printSeries;
 
 
-
-},{"./utils":13,"./watcher":14,"chalk":undefined}],12:[function(require,module,exports){
+},{"./utils":15,"./watcher":16,"chalk":undefined}],14:[function(require,module,exports){
 var API_HOST, BASE, BASE_STORE, KEY, _, add, all, async, available, download, error, findByEp, findEp, fs, path, readAll, readSeries, ref, rimraf, rm, series, storage, unzip, update, updateOne, xml2js;
 
 fs = require('fs');
@@ -432,7 +517,7 @@ available = function() {
 
 readAll = function(cb) {
   if (!fs.existsSync(BASE_STORE)) {
-    return error("Your database is empty");
+    return error("No Series Added Yet. Try `tv lookup <title>` first. And then `tv add <id>`");
   }
   return async.map(available(), readSeries, cb);
 };
@@ -506,8 +591,7 @@ module.exports = {
 };
 
 
-
-},{"./utils":13,"async":undefined,"fs":undefined,"path":undefined,"rimraf":undefined,"underscore":undefined,"unzip":undefined,"xml2js":undefined}],13:[function(require,module,exports){
+},{"./utils":15,"async":undefined,"fs":undefined,"path":undefined,"rimraf":undefined,"underscore":undefined,"unzip":undefined,"xml2js":undefined}],15:[function(require,module,exports){
 var download, error, fs, http, parseString, pr, req, xmlReq;
 
 req = require('request');
@@ -563,8 +647,7 @@ module.exports = {
 };
 
 
-
-},{"fs":undefined,"http":undefined,"request":undefined,"xml2js":undefined}],14:[function(require,module,exports){
+},{"fs":undefined,"http":undefined,"request":undefined,"xml2js":undefined}],16:[function(require,module,exports){
 var BASE, WATCH_FILE, fs, isWatched, read, save, watch, watchFn;
 
 fs = require('fs');
@@ -609,69 +692,4 @@ module.exports = {
 };
 
 
-
-},{"fs":undefined}],15:[function(require,module,exports){
-var KEY, add, args, cmd, commands, error, fn, list, lookup, remained, rm, update, view, watch, watchTill;
-
-lookup = require('./cmd/lookup');
-
-add = require('./cmd/add');
-
-view = require('./cmd/view');
-
-list = require('./cmd/list');
-
-watch = require('./cmd/watch');
-
-watchTill = require('./cmd/watch-till');
-
-rm = require('./cmd/rm');
-
-update = require('./cmd/update');
-
-remained = require('./cmd/remained');
-
-error = require('./lib/utils').error;
-
-KEY = process.env.THETVDB_API_KEY;
-
-if (!KEY) {
-  console.log("You should set up 'THETVDB_API_KEY' env variable. Go here to get it: http://thetvdb.com/?tab=apiregister");
-  proccess.exit(1);
-}
-
-cmd = process.argv[2];
-
-args = process.argv.slice(3);
-
-commands = {
-  lookup: lookup,
-  search: lookup,
-  add: add,
-  watch: watch,
-  'watch-till': watchTill,
-  wt: watchTill,
-  view: view,
-  show: view,
-  list: list,
-  rm: rm,
-  update: update,
-  remained: remained
-};
-
-fn = void 0;
-
-if (cmd) {
-  fn = commands[cmd];
-  if (!fn) {
-    return error("Unsupported command");
-  }
-} else {
-  fn = remained;
-}
-
-fn.apply(null, args);
-
-
-
-},{"./cmd/add":1,"./cmd/list":2,"./cmd/lookup":3,"./cmd/remained":4,"./cmd/rm":5,"./cmd/update":6,"./cmd/view":7,"./cmd/watch":9,"./cmd/watch-till":8,"./lib/utils":13}]},{},[15]);
+},{"fs":undefined}]},{},[11]);

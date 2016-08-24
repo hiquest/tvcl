@@ -8,6 +8,7 @@ watchTill = require('./cmd/watch-till')
 rm        = require('./cmd/rm')
 update    = require('./cmd/update')
 remained  = require('./cmd/remained')
+help      = require('./cmd/help')
 
 {error}   = require('./lib/utils')
 
@@ -33,6 +34,7 @@ commands =
   rm: rm
   update: update
   remained: remained
+  help: help
 
 fn = if cmd
        commands[cmd]
