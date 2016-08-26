@@ -10,6 +10,6 @@ list = ->
              .map((s) -> s['Data']['Series'][0])
              .forEach (s) -> printSeries(s, false)
     else
-      return error("No Series Added Yet. Try `tv lookup <title>` first. And then `tv add <id>`")
+      return error("No Series Added Yet. Try `tvcl lookup <title>` first. And then `tvcl add <id>`")
 
 module.exports = list
