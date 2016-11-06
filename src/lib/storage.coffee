@@ -46,7 +46,7 @@ available = ->
     fs.statSync(path.join(BASE_STORE, f)).isDirectory()
 
 readAll = (cb) ->
-  return error("No Series Added Yet. Try `tv lookup <title>` first. And then `tv add <id>`") unless fs.existsSync(BASE_STORE)
+  return error("No Series Added Yet. Try `tvcl lookup <title>` first. And then `tvcl add <id>`") unless fs.existsSync(BASE_STORE)
   async.map(available(), readSeries, cb)
 
 series = (id, cb) ->

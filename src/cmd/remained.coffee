@@ -13,7 +13,7 @@ rem = (param) ->
   storage.readAll ->
     series = storage.all()
     if !series.length
-      pr('No Series Added Yet. Try `tv lookup <title>` first. And then `tv add <id>`')
+      pr('No Series Added Yet. Try `tvcl lookup <title>` first. And then `tvcl add <id>`')
       return
     series.forEach (s) ->
       title = "[#{s['Data']['Series'][0]['SeriesName'][0]}]"
