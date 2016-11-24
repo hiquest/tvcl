@@ -1,10 +1,10 @@
 const {bold} = require('chalk');
 
 function help() {
-  console.log(`\n${bold('tvcl')} is a simple script that helps to keep track of episodes watched and episodes available (using thetvdb.com API as a source).`);
+  console.log(`\n${bold('tv')} is a simple script that helps to keep track of episodes watched and episodes available (using thetvdb.com API as a source).`);
   console.log(`You need to get an API key (which is free at http://thetvdb.com/?tab=apiregister) and set an environment variable #{bold('THETVDB_API_KEY')}.`);
   console.log("\n");
-  console.log(`Usage: ${bold('tvcl')} <command> {params}`);
+  console.log(`Usage: ${bold('tv')} <command> {params}`);
   console.log("\n");
   console.log(`${bold('lookup')} or ${bold('search')} <title>`);
   console.log("    lookup for a particular show");

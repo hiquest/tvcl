@@ -7,7 +7,7 @@ function list() {
     const series = storage.all();
     if (series.length) {
       pr("");
-      pr("List of tracked shows (use `tvcl update` to sync)");
+      pr("List of tracked shows (use `tv update` to sync)");
       pr("");
       storage
         .all()
@@ -15,7 +15,7 @@ function list() {
         .forEach((s) => printSeries(s, false, true));
       pr("");
     } else {
-      return error("No Series Added Yet. Try `tvcl lookup <title>` first. And then `tvcl add <id>`");
+      return error("No Series Added Yet. Try `tv lookup <title>` first. And then `tv add <id>`");
     }
   });
 }

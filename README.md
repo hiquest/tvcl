@@ -1,6 +1,6 @@
-# tvcl
+# tv
 Command line interface for TV Shows Tracking
-![](https://dl.dropboxusercontent.com/u/1995551/misc/tvcl.png)
+![](https://dl.dropboxusercontent.com/u/1995551/misc/tv.png)
 
 # Intro
 This small tool is a CLI for [http://thetvdb.com/](http://thetvdb.com/) API. It allows to track tv shows you follow and the episodes you didn't watch yet.
@@ -23,42 +23,42 @@ $ npm install tvcl -g
 
 Lookup the series title:
 ```bash
-$ tvcl lookup the simpsons
+$ tv lookup the simpsons
 ```
 (you can use `search` alias)
 
 Add the series to local database by id:
-```bash 
-$ tvcl add {id}
+```bash
+$ tv add {id}
 ```
 
 List added series:
 ```bash
-$ tvcl list
+$ tv list
 ```
 
 View the list of episodes for specified series (--wo stands for "with overview"):
 ```bash
-$ tvcl view {series_id} --wo
+$ tv view {series_id} --wo
 ```
 (you can use `show` alias)
 
 Mark episode as watched:
 ```
-$ tvcl watch {epid}
+$ tv watch {epid}
 ```
 
 Mark all episodes till the specified as watched:
 ```bash
-$ tvcl watch-till {epid}
+$ tv watch-till {epid}
 ```
 (you can use `wt` alias)
 
 Show the not-watched-yet episoded:
 ```
-$ tvcl remained 
+$ tv remained
 ```
 or just
 ```
-$ tvcl
+$ tv
 ```

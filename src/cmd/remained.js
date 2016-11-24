@@ -11,7 +11,7 @@ function rem(param) {
   storage.readAll(() => {
     const series = storage.all();
     if (!series.length) {
-      pr('No Series Added Yet. Try `tvcl lookup <title>` first. And then `tvcl add <id>`');
+      pr('No Series Added Yet. Try `tv lookup <title>` first. And then `tv add <id>`');
       return;
     }
 
