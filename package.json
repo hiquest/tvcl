@@ -24,8 +24,7 @@
   },
   "repository": "hiquest/tvcl",
   "devDependencies": {
-    "eslint": "^3.10.2",
-    "eslint-config-google": "^0.7.0"
+    "eslint": "^3.10.2"
   },
   "keywords": [
     "tv",
