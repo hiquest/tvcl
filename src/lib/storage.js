@@ -62,7 +62,7 @@ function series(id, cb) {
   if (storage[id]) {
     return cb(storage[id]);
   } else {
-    return readSeries(id, (err, res) => cb(storage[id]));
+    return readSeries(id, () => cb(storage[id]));
   }
 }
 

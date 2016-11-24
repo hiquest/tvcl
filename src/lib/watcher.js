@@ -10,14 +10,14 @@ function read() {
     cache = JSON.parse(fs.readFileSync(WATCH_FILE));
   } else {
     cache = {};
-  };
+  }
 }
 
 function watch(epId) {
   if (!cache) {
     read();
   }
-  cache[epId] = true
+  cache[epId] = true;
 }
 
 function save() {
