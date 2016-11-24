@@ -2,13 +2,15 @@
   "name": "tvcl",
   "version": "0.2.6",
   "description": "A simple CLI for tracking tv shows",
-  "main": "index.js",
+  "main": "./index.js",
   "bin": {
-    "tvcl": "index.js"
+    "tvcl": "./index.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "browserify -t coffeeify  --extension='.coffee' --no-bundle-external --node src/index.coffee > index-tmp.js"
+    "build": "babel src --presets babel-preset-es2015 --out-dir dist",
+    "prepublish": "npm run build",
+    "test": "karma start --single-run",
+    "test-watch": "karma start"
   },
   "files": [],
   "author": "Yanis",
@@ -25,14 +27,15 @@
   },
   "repository": "hiquest/tvcl",
   "devDependencies": {
-    "browserify": "^13.0.1",
-    "coffeeify": "^1.1.0"
+    "eslint": "^3.10.2",
+    "eslint-config-google": "^0.7.0"
   },
   "keywords": [
     "tv",
     "series",
     "shows",
-    "tracker"
+    "tracker",
+    "thetvdb"
   ],
   "preferGlobal": "true"
 }
