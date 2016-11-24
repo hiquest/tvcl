@@ -1,7 +1,8 @@
 {
   "name": "tvcl",
-  "version": "1.0.0",
+  "version": "1.0.6",
   "description": "A simple CLI for tracking tv shows",
+  "files": ["src"],
   "main": "./src/index.js",
   "bin": {
     "tv": "./src/index.js"
@@ -9,7 +10,6 @@
   "scripts": {
     "lint": "eslint ./src"
   },
-  "files": [],
   "author": "Yanis",
   "license": "MIT",
   "dependencies": {
