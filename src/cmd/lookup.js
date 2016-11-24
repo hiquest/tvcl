@@ -1,4 +1,4 @@
-const {xmlReq, error} = require('../lib/utils');
+const {xmlReq, error, pr} = require('../lib/utils');
 const printSeries = require('../lib/print_series');
 
 const API_HOST = 'http://thetvdb.com';
@@ -15,7 +15,8 @@ function lookup(...args) {
     if (!res['Data']['Series']) {
       return error('Could not find any show');
     }
-    res['Data']['Series'].forEach(printSeries);
+    pr();
+    res['Data']['Series'].forEach((s) => printSeries(s));
   });
 }
 

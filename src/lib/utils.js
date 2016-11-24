@@ -3,7 +3,7 @@ const {parseString} = require('xml2js');
 const http = require('http');
 const fs = require('fs');
 
-function pr(msg) {
+function pr(msg = "") {
   console.log(`    ${msg}`);
 }
 

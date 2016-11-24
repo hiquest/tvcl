@@ -25,6 +25,7 @@ function printEp(e, showOverview = false) {
   const code = bold(`S${season}E${number}`);
   let line = `${id} ${code} ${name}, ${aired}`;
   if (watched) {
+    line = `✓ ${line}`;
     line = gray(line);
   }
   pr(line);

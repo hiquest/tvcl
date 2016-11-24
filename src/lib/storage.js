@@ -21,7 +21,7 @@ function findEp(epId) {
     return undefined;
   }
   const episodes = series['Data']['Episode'];
-  _.find(episodes, e => e['id'][0] == epId );
+  return _.find(episodes, e => e['id'][0] == epId );
 }
 
 function findSeriesByEp(epId) {
@@ -100,7 +100,7 @@ function update(cb) {
 
 // Should be used only after readAll!
 function all(){
-  Object.keys(storage).map(k => storage[k]);
+  return Object.keys(storage).map(k => storage[k]);
 }
 
 module.exports = {

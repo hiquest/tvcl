@@ -5,50 +5,31 @@ if (!KEY) {
   process.exit(1);
 }
 
-const cmd = process.argv[2];
+// Take arguments
+const cmd = process.argv[2] || "remained";
 const args = process.argv.slice(3);
-if (cmd == "lookup" || cmd == "search") {
-  require('./cmd/lookup')(...args);
-} else if (cmd == "add") {
-  require('./cmd/add')(...args);
-} else {
-  process.exit(1);
-}
 
-// //
-// //
-// // kk
-// // All the commands we have
-// const        = require('./cmd/add');
-// const view      = require('./cmd/view');
-// const list      = require('./cmd/list');
-// const watch     = require('./cmd/watch');
-// const watchTill = require('./cmd/watch-till');
-// const rm        = require('./cmd/rm');
-// const update    = require('./cmd/update');
-// const remained  = require('./cmd/remained');
-// const help      = require('./cmd/help');
+// Available commands (array means aliases)
+const commands = [
+  ["lookup", "search"],
+  "add",
+  "list",
+  ["view", "show"],
+  "watch",
+  ["watch-till", "wt"],
+  "rm",
+  "update",
+  "remained",
+  "help"
+];
 
-// const {error}   = require('./lib/utils');
+// Do we have this command?
+let mod = commands.find((cmds) => {
+  return Array.isArray(cmds) && cmds.indexOf(cmd) > -1 || cmds == cmd;
+}) || "help";
 
-// const commands = {
-//   add: add,
-//   watch: watch,
-//   'watch-till': watchTill,
-//   wt: watchTill,
-//   view: view,
-//   show: view,
-//   list: list,
-//   rm: rm,
-//   update: update,
-//   remained: remained,
-//   help: help
-// };
+// Let's figure out module
+mod = Array.isArray(mod) ? mod[0] : mod;
 
-// const fn = cmd ? commands[cmd] : remained;
-
-// if (fn) {
-//   fn(...args);
-// } else {
-//   error("Unsupported command");
-// }
+// Require it and call the command
+require(`./cmd/${mod}`)(...args);

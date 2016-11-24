@@ -11,7 +11,7 @@ function printOverview(s) {
   }
 }
 
-function printSeries(s, overview = true) {
+function printSeries(s, overview = true, noSpace = false) {
   const id = s['seriesid'] || s['id'][0];
   const name = bold(s['SeriesName']);
   const aired = s['FirstAired'] || '?';
@@ -19,7 +19,9 @@ function printSeries(s, overview = true) {
   pr(resLine);
   if (overview) {
     printOverview(s);
-    pr('  ');
+  }
+  if (!noSpace) {
+    pr();
   }
 }
 

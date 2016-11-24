@@ -7,19 +7,16 @@
     "tvcl": "./index.js"
   },
   "scripts": {
-    "build": "babel src --presets babel-preset-es2015 --out-dir dist",
-    "prepublish": "npm run build",
-    "test": "karma start --single-run",
-    "test-watch": "karma start"
+    "lint": "eslint ./src"
   },
   "files": [],
   "author": "Yanis",
   "license": "MIT",
   "dependencies": {
-    "async": "^1.4.0",
+    "async": "^2.1.4",
     "chalk": "^1.1.0",
-    "moment": "^2.10.6",
-    "request": "^2.60.0",
+    "moment": "^2.17.0",
+    "request": "^2.79.0",
     "rimraf": "^2.4.2",
     "underscore": "^1.8.3",
     "unzip": "^0.1.11",
