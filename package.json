@@ -1,6 +1,6 @@
 {
   "name": "tvcl",
-  "version": "1.0.6",
+  "version": "1.0.8",
   "description": "A simple CLI for tracking tv shows",
   "files": ["src"],
   "main": "./src/index.js",

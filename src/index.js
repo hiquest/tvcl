@@ -1,3 +1,5 @@
+#!/usr/bin/env node --harmony
+
 // Check that the API key is set up
 const KEY = process.env.THETVDB_API_KEY;
 if (!KEY) {
