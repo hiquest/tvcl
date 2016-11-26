@@ -22,6 +22,8 @@ const commands = [
   "rm",
   "update",
   "remained",
+  "next",
+  ["next-random", "nr"],
   "help"
 ];
 

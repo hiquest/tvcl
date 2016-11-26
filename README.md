@@ -54,7 +54,7 @@ $ tv watch-till {epid}
 ```
 (you can use `wt` alias)
 
-Show the not-watched-yet episoded:
+Show the not-watched-yet episodes:
 ```
 $ tv remained
 ```
@@ -62,3 +62,18 @@ or just
 ```
 $ tv
 ```
+
+Show one not-watched-yet episode for each show:
+```
+$ tv next
+```
+
+Show one not-watched-yet episode of a random tracked show:
+```
+$ tv next-random
+```
+or just
+```
+$ tv nr
+```
+

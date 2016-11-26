@@ -24,6 +24,10 @@ function help() {
   console.log("    mark a specific episode as watched and all of the episodes before it");
   console.log(`${bold('remained')} ( or with no command )`);
   console.log("    shows episodes remained to be watched (but only the ones that are out by current date)");
+  console.log(`${bold('next')}`);
+  console.log("    shows first unwatched episode of each tracked show");
+  console.log(`${bold('next-random')} or ${bold('nr')}`);
+  console.log("    shows first unwatched episode of a randomly chosen tracked show");
   console.log(`${bold('help')}`);
   console.log("    prints what you are now looking at");
   console.log("\n");
