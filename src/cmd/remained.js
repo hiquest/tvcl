@@ -1,37 +1,27 @@
 const {bold} = require('chalk');
-const moment = require('moment');
 
-const storage = require('../lib/storage');
-const watcher = require('../lib/watcher');
+const EpisodesToWatch = require('../lib/episodes_to_watch');
 const {pr}    = require('../lib/utils');
 const printEp = require('../lib/print_ep');
 
 function rem(param) {
   const showOverview = param == '--with-overview' || param == '--wo';
-  storage.readAll(() => {
-    const series = storage.all();
-    if (!series.length) {
+
+  EpisodesToWatch.all((serieses) => {
+
+    if (!serieses) {
       pr('No Series Added Yet. Try `tv lookup <title>` first. And then `tv add <id>`');
       return;
     }
 
-    series.forEach((s) => {
-      const title = `${s['Data']['Series'][0]['SeriesName'][0]}`;
-      const episodes = s['Data']['Episode'];
-      const eps = episodes
-        .filter(e => !watcher.isWatched(e))
-        .filter(e => !!e['FirstAired'][0])
-        .filter(e => moment(e['FirstAired'][0]).isBefore(moment()));
-
-      if (eps.length) {
-        pr("  ");
-        pr(`${bold(title)}`);
-        pr("  ");
-        eps.forEach((e) => printEp(e, showOverview));
-      }
+    serieses.forEach((s) => {
       pr("  ");
-
+      pr(bold(s.seriesTitle));
+      pr("  ");
+      s.episodes.forEach((e) => printEp(e, showOverview));
+      pr("  ");
     });
+
   });
 }
 
