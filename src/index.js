@@ -19,7 +19,7 @@ const commands = [
   ["view", "show"],
   "watch",
   ["watch-till", "wt"],
-  "rm",
+  ["rm", "remove"],
   "update",
   "remained",
   "help"

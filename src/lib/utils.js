@@ -8,7 +8,9 @@ function pr(msg = "") {
 }
 
 function error(msg) {
+  pr(" ");
   pr(msg);
+  pr(" ");
   process.exit(1);
 }
 

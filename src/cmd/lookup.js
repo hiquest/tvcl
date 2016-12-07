@@ -17,6 +17,9 @@ function lookup(...args) {
     }
     pr();
     res['Data']['Series'].forEach((s) => printSeries(s));
+
+    pr("To add a show type `tv add <id>`");
+    pr();
   });
 }
 

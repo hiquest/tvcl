@@ -9,17 +9,22 @@ function rem(param) {
 
   EpisodesToWatch.all((serieses) => {
 
-    if (!serieses) {
-      pr('No Series Added Yet. Try `tv lookup <title>` first. And then `tv add <id>`');
+    if (!serieses || !serieses.length) {
+      pr(" ");
+      pr('✓ All done. Try `tv lookup <title>` to search new shows');
+      pr(" ");
       return;
     }
 
     serieses.forEach((s) => {
-      pr("  ");
+      if (!s.episodes.length) {
+        return;
+      }
+      pr(" ");
       pr(bold(s.seriesTitle));
-      pr("  ");
-      s.episodes.forEach((e) => printEp(e, showOverview));
-      pr("  ");
+      pr(" ");
+      s.episodes.forEach(e => printEp(e, showOverview));
+      pr(" ");
     });
 
   });
