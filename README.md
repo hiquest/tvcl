@@ -1,5 +1,5 @@
 # tvcl
-A simple CLI for shows tracking
+A simple show tracker CLI
 
 ![](https://dl.dropboxusercontent.com/u/1995551/misc/tvcl.png)
 
