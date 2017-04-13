@@ -1,5 +1,6 @@
 # tvcl
-Command line interface for TV Shows Tracking
+A simple CLI for shows tracking
+
 ![](https://dl.dropboxusercontent.com/u/1995551/misc/tvcl.png)
 
 # Intro
