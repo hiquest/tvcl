@@ -11,6 +11,7 @@ const CMDS = [
   ["rm", "remove"],
   "update",
   "remained",
+  "upcoming",
   "help"
 ];
 

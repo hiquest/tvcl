@@ -6,7 +6,7 @@ const printEp = require('../lib/print_ep');
 
 function rem(param) {
 
-  EpisodesToWatch.all((serieses) => {
+  EpisodesToWatch.upcoming((serieses) => {
 
     if (!serieses || !serieses.length) return printStub();
 

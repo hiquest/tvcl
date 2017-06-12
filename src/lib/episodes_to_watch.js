@@ -4,6 +4,20 @@ const storage = require('./storage');
 const watcher = require('./watcher');
 
 function all(cb) {
+  return filterEps((e) => {
+    return !watcher.isWatched(e)
+      && moment(e['FirstAired'][0]).isBefore(moment());
+  }, cb);
+}
+
+function upcoming(cb) {
+  return filterEps((e) => {
+    return moment(e['FirstAired'][0]).isBefore(moment().add(2, 'M'))
+      && moment(e['FirstAired'][0]).isAfter(moment());
+  }, cb);
+}
+
+function filterEps(filterFn, cb) {
   storage.readAll(() => {
     const serieses = storage.all();
     if (!serieses.length) {
@@ -15,8 +29,7 @@ function all(cb) {
       .map((s) => {
         const eps = s['Data']['Episode']
           .filter(e => !watcher.isWatched(e))
-          .filter(e => !!e['FirstAired'][0])
-          .filter(e => moment(e['FirstAired'][0]).isBefore(moment()));
+          .filter(filterFn);
 
         return {
           seriesTitle: s['Data']['Series'][0]['SeriesName'][0],
@@ -28,4 +41,4 @@ function all(cb) {
   });
 }
 
-module.exports = { all };
+module.exports = { all, upcoming };
