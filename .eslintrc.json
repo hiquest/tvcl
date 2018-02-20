@@ -1,25 +1,25 @@
 {
-    "env": {
-        "es6": true,
-        "node": true
-    },
-    "plugins": ["node"],
-    "extends": ["eslint:recommended", "plugin:node/recommended"],
-    "rules": {
-        "indent": [
-            "error",
-            2
-        ],
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
-        "quotes": [
-            "off",
-            "double"
-        ],
-        "no-console": [
-          "off"
-        ]
-    }
+  "env": {
+    "es6": true,
+    "node": true
+  },
+  "plugins": ["node"],
+  "extends": ["eslint:recommended", "plugin:node/recommended"],
+  "rules": {
+    "indent": [
+      "error",
+      2
+    ],
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
+    "quotes": [
+      "off",
+      "double"
+    ],
+    "no-console": [
+      "off"
+    ]
+  }
 }
