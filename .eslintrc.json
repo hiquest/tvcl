@@ -3,7 +3,8 @@
         "es6": true,
         "node": true
     },
-    "extends": "eslint:recommended",
+    "plugins": ["node"],
+    "extends": ["eslint:recommended", "plugin:node/recommended"],
     "rules": {
         "indent": [
             "error",
@@ -16,10 +17,6 @@
         "quotes": [
             "off",
             "double"
-        ],
-        "semi": [
-            "error",
-            "always"
         ],
         "no-console": [
           "off"

@@ -22,8 +22,7 @@ require(`./cmd/${mod}`)(...args);
 
 function ensureTvdbKey() {
   if (!process.env.THETVDB_API_KEY) {
-    console.log("Please add 'THETVDB_API_KEY' env variable. You can get it here: http://thetvdb.com/?tab=apiregister");
-    process.exit(1);
+    throw "Please add 'THETVDB_API_KEY' env variable. You can get it here: http://thetvdb.com/?tab=apiregister"
   }
 }
 

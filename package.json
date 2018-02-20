@@ -2,7 +2,9 @@
   "name": "tvcl",
   "version": "1.1.0",
   "description": "A simple CLI for tv show tracking",
-  "files": ["src"],
+  "files": [
+    "src"
+  ],
   "main": "./src/index.js",
   "bin": {
     "tv": "./src/index.js"
@@ -24,7 +26,8 @@
   },
   "repository": "hiquest/tvcl",
   "devDependencies": {
-    "eslint": "^4.18.0"
+    "eslint": "^4.18.0",
+    "eslint-plugin-node": "^6.0.0"
   },
   "keywords": [
     "tv",
@@ -33,5 +36,8 @@
     "tracker",
     "thetvdb"
   ],
-  "preferGlobal": "true"
+  "preferGlobal": "true",
+  "engines": {
+    "node": ">=6.0.0"
+  }
 }

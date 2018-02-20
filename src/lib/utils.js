@@ -11,7 +11,7 @@ function error(msg) {
   pr(" ");
   pr(msg);
   pr(" ");
-  process.exit(1);
+  throw msg;
 }
 
 function xmlReq(url, cb) {
