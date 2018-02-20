@@ -14,7 +14,7 @@
   "license": "MIT",
   "dependencies": {
     "async": "^2.1.4",
-    "chalk": "^1.1.0",
+    "chalk": "^2.3.0",
     "moment": "^2.17.0",
     "request": "^2.79.0",
     "rimraf": "^2.4.2",
@@ -24,7 +24,7 @@
   },
   "repository": "hiquest/tvcl",
   "devDependencies": {
-    "eslint": "^3.10.2"
+    "eslint": "^4.18.0"
   },
   "keywords": [
     "tv",
