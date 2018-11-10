@@ -1,12 +1,12 @@
-const {error} = require('../lib/utils');
-const storage = require('../lib/storage');
-const view = require('./view');
+const {error} = require('../lib/utils')
+const storage = require('../lib/storage')
+const view = require('./view')
 
 function add(id) {
   if (!id) {
-    error('Please specify Series id');
+    error('Please specify Series id')
   }
-  storage.add(id, () => view(id));
+  storage.add(id, () => view(id))
 }
 
-module.exports = add;
+module.exports = add

@@ -13,12 +13,12 @@ const CMDS = [
   "remained",
   "upcoming",
   "help"
-];
+]
 
-ensureTvdbKey();
-const [cmd, args] = readArgs();
-const mod = figureModule(cmd);
-require(`./cmd/${mod}`)(...args);
+ensureTvdbKey()
+const [cmd, args] = readArgs()
+const mod = figureModule(cmd)
+require(`./cmd/${mod}`)(...args)
 
 function ensureTvdbKey() {
   if (!process.env.THETVDB_API_KEY) {
@@ -27,15 +27,15 @@ function ensureTvdbKey() {
 }
 
 function readArgs() {
-  const cmd = process.argv[2] || "remained";
-  const args = process.argv.slice(3);
-  return [ cmd, args ];
+  const cmd = process.argv[2] || "remained"
+  const args = process.argv.slice(3)
+  return [ cmd, args ]
 }
 
 function figureModule() {
   const mod = CMDS.find((cmds) => {
-    return Array.isArray(cmds) && cmds.indexOf(cmd) > -1 || cmds == cmd;
-  }) || "help";
+    return Array.isArray(cmds) && cmds.indexOf(cmd) > -1 || cmds == cmd
+  }) || "help"
 
-  return Array.isArray(mod) ? mod[0] : mod;
+  return Array.isArray(mod) ? mod[0] : mod
 }

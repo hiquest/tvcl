@@ -1,36 +1,36 @@
-const { bold } = require('chalk');
+const { bold } = require('chalk')
 
-const EpisodesToWatch = require('../lib/episodes_to_watch');
-const { pr } = require('../lib/utils');
-const printEp = require('../lib/print_ep');
+const EpisodesToWatch = require('../lib/episodes_to_watch')
+const { pr } = require('../lib/utils')
+const printEp = require('../lib/print_ep')
 
 function rem(param) {
 
   EpisodesToWatch.upcoming((serieses) => {
 
-    if (!serieses || !serieses.length) return printStub();
+    if (!serieses || !serieses.length) return printStub()
 
-    const showOverview = param == '--with-overview' || param == '--wo';
+    const showOverview = param == '--with-overview' || param == '--wo'
     serieses
       .filter(s => s.episodes.length > 0)
       .forEach((s) => {
-        printSeries(s, showOverview);
-      });
-  });
+        printSeries(s, showOverview)
+      })
+  })
 }
 
 function printStub() {
-  pr(" ");
-  pr('✓ All done. Try `tv lookup <title>` to search new shows');
-  pr(" ");
+  pr(" ")
+  pr('✓ All done. Try `tv lookup <title>` to search new shows')
+  pr(" ")
 }
 
 function printSeries(s, showOverview) {
-  pr(" ");
-  pr(bold(s.seriesTitle));
-  pr(" ");
-  s.episodes.forEach(e => printEp(e, showOverview));
-  pr(" ");
+  pr(" ")
+  pr(bold(s.seriesTitle))
+  pr(" ")
+  s.episodes.forEach(e => printEp(e, showOverview))
+  pr(" ")
 }
 
-module.exports = rem;
+module.exports = rem

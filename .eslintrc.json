@@ -1,25 +1,19 @@
 {
+  "parserOptions": {
+    "ecmaVersion": 2017
+  },
   "env": {
     "es6": true,
-    "node": true
+    "node": true,
+    "commonjs": true
   },
-  "plugins": ["node"],
-  "extends": ["eslint:recommended", "plugin:node/recommended"],
+  "extends": "eslint:recommended",
   "rules": {
-    "indent": [
-      "error",
-      2
-    ],
-    "linebreak-style": [
-      "error",
-      "unix"
-    ],
-    "quotes": [
-      "off",
-      "double"
-    ],
-    "no-console": [
-      "off"
-    ]
+    "no-use-before-define": [2, { "functions": false } ],
+    "semi": [2, "never"],
+    "no-underscore-dangle": 0,
+    "no-return-assign": 0,
+    "camelcase": 0,
+    "no-console": 0
   }
 }
