@@ -15,19 +15,19 @@
   "author": "Yanis",
   "license": "MIT",
   "dependencies": {
-    "async": "^2.1.4",
-    "chalk": "^2.3.0",
-    "moment": "^2.17.0",
+    "async": "^3.0.1",
+    "chalk": "^2.4.2",
+    "moment": "^2.24.0",
     "request": "^2.79.0",
-    "rimraf": "^2.4.2",
+    "rimraf": "^2.6.3",
     "underscore": "^1.8.3",
     "unzip": "^0.1.11",
     "xml2js": "^0.4.9"
   },
   "repository": "hiquest/tvcl",
   "devDependencies": {
-    "eslint": "^5.9.0",
-    "eslint-plugin-node": "^6.0.0"
+    "eslint": "^5.16.0",
+    "eslint-plugin-node": "^9.0.1"
   },
   "keywords": [
     "tv",
