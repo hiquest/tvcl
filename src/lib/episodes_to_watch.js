@@ -12,8 +12,8 @@ function all(cb) {
 
 function upcoming(cb) {
   return filterEps((e) => {
-    return moment(e['FirstAired'][0]).isBefore(moment().add(2, 'M'))
-      && moment(e['FirstAired'][0]).isAfter(moment())
+    const aired = moment(e['FirstAired'][0])
+    return aired.isBefore(moment().add(2, 'M')) && aired.isAfter(moment())
   }, cb)
 }
 

@@ -21,7 +21,7 @@ function rem(param) {
 
 function printStub() {
   pr(" ")
-  pr('✓ All done. Try `tv lookup <title>` to search new shows')
+  pr('✓ All done. Try `tv lookup <title>` to search for shows')
   pr(" ")
 }
 

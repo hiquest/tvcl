@@ -2,7 +2,7 @@ const fs = require('fs')
 const xml2js = require('xml2js')
 const async = require('async')
 const path = require('path')
-const unzip = require('unzip')
+const unzip = require('unzipper')
 const _ = require('underscore')
 const rimraf = require('rimraf')
 
