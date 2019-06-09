@@ -1,7 +1,7 @@
 # tvcl
 A simple show tracker CLI
 
-![](/img/tvcli.png?raw=true)
+![](/img/tvcli.gif?raw=true)
 
 # Intro
 This small tool is a CLI for [http://thetvdb.com/](http://thetvdb.com/) API. It allows to track tv shows you follow and the episodes you didn't watch yet.
