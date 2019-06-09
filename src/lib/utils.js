@@ -11,7 +11,6 @@ function error(msg) {
   pr(" ")
   pr(msg)
   pr(" ")
-  throw msg
 }
 
 function xmlReq(url, cb) {

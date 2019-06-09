@@ -53,7 +53,7 @@ function available() {
 
 function readAll(cb) {
   if (!fs.existsSync(BASE_STORE)) {
-    return error("No Series Added Yet. Try `tv lookup <title>` first. And then `tv add <id>`")
+    return error("No shows added. Try `tv lookup <title>` first. And then `tv add <id>`")
   }
   return async.map(available(), readSeries, cb)
 }
