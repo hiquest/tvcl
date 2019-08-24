@@ -25,10 +25,6 @@
     "xml2js": "^0.4.9"
   },
   "repository": "hiquest/tvcl",
-  "devDependencies": {
-    "eslint": "^5.16.0",
-    "eslint-plugin-node": "^9.0.1"
-  },
   "keywords": [
     "tv",
     "series",
@@ -39,5 +35,8 @@
   "preferGlobal": "true",
   "engines": {
     "node": ">=6.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.2.2"
   }
 }
